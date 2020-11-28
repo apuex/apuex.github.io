@@ -110,6 +110,8 @@ $ ./parse-cmdline -k my-id -t 10 file.txt
 --key=my-id
 --timeout=10
 non-option ARGV-elements: file.txt 
+$ ./parse-cmdline -h
+Usage: ./parse-cmdline [-k key] [-t nsecs]
 $
 ```
 
@@ -122,6 +124,37 @@ $
 ## NodeJS
 
 ## Python
+```
+from optparse import OptionParser
+
+parser = OptionParser()
+parser.add_option("-f", "--file", dest="filename",
+    help="write report to FILE", metavar="FILE")
+parser.add_option("-q", "--quiet",
+    action="store_false", dest="verbose", default=True,
+    help="don't print status messages to stdout")
+
+(options, args) = parser.parse_args()
+print options, args
+```
+
+Run:
+```
+$ python parse-cmdline.py
+{'verbose': True, 'filename': None} []
+$ python parse-cmdline.py file.txt
+{'verbose': True, 'filename': None} ['file.txt']
+$ python parse-cmdline.py --file my-secret.doc file.txt
+{'verbose': True, 'filename': 'my-secret.doc'} ['file.txt']
+$ python parse-cmdline.py -h
+Usage: parse-cmdline.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -f FILE, --file=FILE  write report to FILE
+  -q, --quiet           don't print status messages to stdout
+$
+```
 
 ## Shell
 
