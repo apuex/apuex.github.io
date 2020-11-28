@@ -52,6 +52,50 @@ main (int argc, char *argv[])
 	break;
 
       switch (c)
+	{
+	case 'k':
+	  if (strlen (optarg) >= KEY_LENGTH)
+	    {
+	      exit (EXIT_FAILURE);
+	    }
+	  else
+	    {
+	      strncpy (key, optarg, KEY_LENGTH - 1);
+	    }
+	  break;
+
+	case 't':
+	  nsecs = atoi (optarg);
+	  break;
+
+	case 'h':
+	  help (argv[0]);
+	  exit (EXIT_SUCCESS);
+
+	case 'v':
+	  version ();
+	  exit (EXIT_SUCCESS);
+	  break;
+
+	default:
+	  printf ("?? getopt returned character code 0%o ??\n", c);
+	  exit (EXIT_FAILURE);
+	}
+    }
+
+  printf("--key=%s\n", key);
+  printf("--timeout=%d\n", nsecs);
+  if (optind < argc)
+    {
+      printf ("non-option ARGV-elements: ");
+      while (optind < argc)
+	printf ("%s ", argv[optind++]);
+      printf ("\n");
+      exit (EXIT_FAILURE);
+    }
+
+  exit (EXIT_SUCCESS);
+}
 ```
 Compile & Run:
 ```
