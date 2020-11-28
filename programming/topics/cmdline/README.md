@@ -121,6 +121,36 @@ $
 
 A full, working sample at [https://github.com/apuex/haskell-services-gen](https://github.com/apuex/haskell-services-gen/blob/master/src/Main.hs)
 
+Build & Run:
+```
+$ git clone https://github.com/apuex/haskell-services-gen
+$ cd haskell-services-gen
+$ stack install
+$ haskell-services-gen -h
+haskell-services-gen-0.1.0.0 by Wangxy <xtwxy@hotmail.com> licensed with Mozilla Public License Version 2.0.
+Usage: haskell-services-gen [OPTION...] files...
+  -A[BOOL]  --generate-all[=BOOL]      generate all
+            --generate-message[=BOOL]  generate message and json parser/format
+            --generate-domain[=BOOL]   generate domain logic
+            --generate-dao[=BOOL]      generate dao
+            --generate-service[=BOOL]  generate service
+            --generate-route[=BOOL]    generate http/websockets routes
+            --verbose                  print out verbose information
+  -o[DIR]   --output-dir[=DIR]         output directory for generated files
+  -v        --version                  print version number
+  -h        --help                     print this help message
+$ haskell-services-gen -A sample-model.xml 
+GenMessage  : sample-model.xml
+dbSchema -> sampledb
+name -> my_sample
+package -> com.sample
+GenDomain   : sample-model.xml
+GenDao      : sample-model.xml
+GenService  : sample-model.xml
+GenRoute    : sample-model.xml
+$
+```
+
 ## Java
 A SOAP testing tool(SOAP client) sample using apache commons-cli for parsing command line. requires maven to build.
 
