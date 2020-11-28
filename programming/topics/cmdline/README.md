@@ -119,6 +119,8 @@ $
 
 ## Haskell
 
+A full, working sample at [https://github.com/apuex/haskell-services-gen](https://github.com/apuex/haskell-services-gen/blob/master/src/Main.hs)
+
 ## Java
 A SOAP testing tool(SOAP client) sample using apache commons-cli for parsing command line. requires maven to build.
 
